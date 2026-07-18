@@ -1,0 +1,180 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* SchoolHub Design System — warm scholarly palette
+   Chalkboard emerald + saffron gold + warm cream.
+   All colors HSL. */
+
+@layer base {
+  :root {
+    --background: 42 34% 97%;
+    --foreground: 165 28% 11%;
+
+    --card: 42 44% 99%;
+    --card-foreground: 165 28% 11%;
+
+    --popover: 42 44% 99%;
+    --popover-foreground: 165 28% 11%;
+
+    --primary: 160 52% 22%;
+    --primary-foreground: 42 44% 97%;
+
+    --secondary: 42 24% 92%;
+    --secondary-foreground: 160 40% 20%;
+
+    --muted: 42 22% 93%;
+    --muted-foreground: 165 12% 42%;
+
+    --accent: 38 88% 52%;
+    --accent-foreground: 165 40% 12%;
+
+    --destructive: 0 72% 48%;
+    --destructive-foreground: 42 44% 98%;
+
+    --success: 142 56% 38%;
+    --success-foreground: 42 44% 98%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 165 40% 12%;
+
+    --border: 42 18% 86%;
+    --input: 42 18% 86%;
+    --ring: 160 52% 22%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 160 40% 14%;
+    --sidebar-foreground: 42 30% 88%;
+    --sidebar-primary: 38 88% 52%;
+    --sidebar-primary-foreground: 165 40% 12%;
+    --sidebar-accent: 160 32% 20%;
+    --sidebar-accent-foreground: 42 40% 95%;
+    --sidebar-border: 160 28% 22%;
+    --sidebar-ring: 38 88% 52%;
+
+    --font-display: "Fraunces", ui-serif, Georgia, serif;
+    --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  }
+
+  .dark {
+    --background: 165 32% 8%;
+    --foreground: 42 34% 93%;
+
+    --card: 165 28% 12%;
+    --card-foreground: 42 34% 93%;
+
+    --popover: 165 30% 10%;
+    --popover-foreground: 42 34% 93%;
+
+    --primary: 38 88% 56%;
+    --primary-foreground: 165 40% 10%;
+
+    --secondary: 165 22% 18%;
+    --secondary-foreground: 42 30% 90%;
+
+    --muted: 165 22% 18%;
+    --muted-foreground: 42 14% 62%;
+
+    --accent: 38 80% 55%;
+    --accent-foreground: 165 40% 10%;
+
+    --destructive: 0 62% 52%;
+    --destructive-foreground: 42 44% 98%;
+
+    --success: 142 50% 48%;
+    --success-foreground: 165 30% 10%;
+
+    --warning: 38 85% 55%;
+    --warning-foreground: 165 40% 10%;
+
+    --border: 165 22% 22%;
+    --input: 165 22% 22%;
+    --ring: 38 80% 55%;
+
+    --sidebar-background: 165 36% 6%;
+    --sidebar-foreground: 42 28% 84%;
+    --sidebar-primary: 38 88% 56%;
+    --sidebar-primary-foreground: 165 40% 10%;
+    --sidebar-accent: 165 28% 16%;
+    --sidebar-accent-foreground: 42 40% 92%;
+    --sidebar-border: 165 24% 18%;
+    --sidebar-ring: 38 80% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3, h4, .font-display {
+    font-family: var(--font-display);
+    font-optical-sizing: auto;
+    letter-spacing: -0.01em;
+  }
+}
+
+@layer utilities {
+  .font-display { font-family: var(--font-display); }
+  .font-sans { font-family: var(--font-sans); }
+
+  .text-balance { text-wrap: balance; }
+
+  .scrollbar-thin::-webkit-scrollbar { width: 6px; height: 6px; }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background: hsl(var(--muted-foreground) / 0.35);
+    border-radius: 9999px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-track { background: transparent; }
+
+  .bg-grid {
+    background-image:
+      linear-gradient(hsl(var(--border) / 0.4) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--border) / 0.4) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+
+  .bg-paper {
+    background-color: hsl(var(--background));
+    background-image: radial-gradient(hsl(var(--foreground) / 0.025) 1px, transparent 1px);
+    background-size: 18px 18px;
+  }
+
+  .shadow-soft {
+    box-shadow: 0 1px 2px hsl(var(--foreground) / 0.04), 0 8px 24px -12px hsl(var(--foreground) / 0.12);
+  }
+  .shadow-card {
+    box-shadow: 0 1px 0 hsl(var(--foreground) / 0.04), 0 1px 3px hsl(var(--foreground) / 0.06), 0 12px 32px -16px hsl(var(--foreground) / 0.18);
+  }
+
+  .animate-in-fade {
+    animation: fade-in 0.4s ease-out both;
+  }
+  .animate-in-up {
+    animation: fade-up 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  .animate-in-scale {
+    animation: fade-scale 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  @keyframes fade-in {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  @keyframes fade-up {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fade-scale {
+    from { opacity: 0; transform: scale(0.97); }
+    to { opacity: 1; transform: scale(1); }
+  }
+}
