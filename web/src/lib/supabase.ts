@@ -13,14 +13,14 @@ if (supabaseInitError) {
 }
 
 export const supabase = supabaseInitError
-  ? new Proxy(
-      {} as Record<string, unknown>,
+  ? (new Proxy(
+      {},
       {
         get() {
           throw supabaseInitError;
         },
       }
-    ) as SupabaseClient<Database>
+    ) as unknown) as SupabaseClient<Database>
   : createClient<Database>(supabaseUrl, supabaseAnonKey, {
       auth: {
         persistSession: true,
